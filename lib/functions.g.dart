@@ -19,14 +19,15 @@ Map<String, dynamic> _$GreetingRequestToJson(GreetingRequest instance) =>
       'name': instance.name,
     };
 
-GreetingResponse _$GreetingResponseFromJson(Map<String, dynamic> json) {
-  return GreetingResponse(
+_$_GreetingResponse _$_$_GreetingResponseFromJson(Map<String, dynamic> json) {
+  return _$_GreetingResponse(
     salutation: json['salutation'] as String,
     name: json['name'] as String,
   );
 }
 
-Map<String, dynamic> _$GreetingResponseToJson(GreetingResponse instance) =>
+Map<String, dynamic> _$_$_GreetingResponseToJson(
+        _$_GreetingResponse instance) =>
     <String, dynamic>{
       'salutation': instance.salutation,
       'name': instance.name,

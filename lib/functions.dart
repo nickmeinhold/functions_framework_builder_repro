@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:functions_framework/functions_framework.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'functions.freezed.dart';
 part 'functions.g.dart';
 
 @JsonSerializable()
@@ -36,26 +38,13 @@ class GreetingRequest {
   int get hashCode => name.hashCode;
 }
 
-@JsonSerializable()
-class GreetingResponse {
-  final String salutation;
-  final String name;
-
-  GreetingResponse({required this.salutation, required this.name});
+@freezed
+class GreetingResponse with _$GreetingResponse {
+  factory GreetingResponse({required String salutation, required String name}) =
+      _GreetingResponse;
 
   factory GreetingResponse.fromJson(Map<String, dynamic> json) =>
       _$GreetingResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GreetingResponseToJson(this);
-
-  @override
-  bool operator ==(Object other) =>
-      other is GreetingResponse &&
-      other.salutation == salutation &&
-      other.name == name;
-
-  @override
-  int get hashCode => salutation.hashCode ^ name.hashCode;
 }
 
 @CloudFunction()
